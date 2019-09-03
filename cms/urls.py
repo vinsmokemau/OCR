@@ -8,8 +8,13 @@ urlpatterns = [
 
     path(
         '',
-        views.HomeView.as_view(),
+        views.ImageCreate.as_view(),
         name='home'
+    ),
+    path(
+    	'<int:image_id>/',
+    	views.ImageDetailView.as_view(),
+    	name='image-detail'
     ),
 
 ]
