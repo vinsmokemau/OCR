@@ -9,7 +9,9 @@ class Image(models.Model):
         upload_to='images',
     )
     excel = models.FileField(
+        'excel',
         blank=True,
+        upload_to='excels',
     )
 
     def get_absolute_url(self):

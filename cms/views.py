@@ -1,4 +1,5 @@
 """."""
+import xlrd
 from django.views.generic import (
     TemplateView,
     CreateView,
@@ -23,7 +24,6 @@ class ImageCreate(CreateView):
 
     def form_valid(self, form):
         self.image = form.cleaned_data['image']
-        print(self.image)
         return super(ImageCreate, self).form_valid(form)
 
     def get_succes_url(self):
@@ -42,4 +42,12 @@ class ImageDetailView(DetailView):
         extraction = OCR_extraccion('media/' + str(self.object.image))
         names = [extraction[name_id] for name_id in extraction]
         context['names_found'] = names
+        wb = xlrd.open_workbook('media/' + str(self.object.excel)) 
+        sheet = wb.sheet_by_index(0)
+        excel_names = [sheet.row_values(row)[2] for row in range(1, sheet.nrows)]
+        related_names = []
+        for excel_name in excel_names:
+            if excel_name in names:
+                related_names.append(excel_name)
+        context['related_names'] = related_names
         return context
