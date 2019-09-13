@@ -16,3 +16,6 @@ class Image(models.Model):
 
     def get_absolute_url(self):
         return reverse('cms:image-detail', kwargs={'image_id': self.pk})
+
+    def export(self):
+        return reverse('cms:export_results_xls', kwargs={'image_id': self.pk})

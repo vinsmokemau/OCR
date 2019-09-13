@@ -19,9 +19,6 @@
         <li class="nav-item">
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Relacion Excel</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">...</a>
-        </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -37,17 +34,17 @@
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <ul>
-            <div class="row">
-            {% for related_name in related_names %}
-              <div class="col-4">
-                <li>{{related_name}}</li>
+            <ul>
+              <div class="row">
+              {% for related_name in related_names %}
+                <div class="col-4">
+                  <li>{{related_name}}</li>
+                </div>
+              {% endfor %}
               </div>
-            {% endfor %}
-            </div>
-          </ul>
+            </ul>
+            <a href="{{ image.export }}" class="btn btn-success">Exportar resultados</a>
         </div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
       </div>
   </div>
 
