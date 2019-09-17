@@ -1,14 +1,22 @@
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
   <title>Home - OCR</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style type="text/css">
+    body {
+      background-image: url("{% static "img/fondo.png" %}");
+      background-repeat: repeat;
+    }
+  </style>
 </head>
 <body>
 
   <!-- As a link -->
-  <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">Imagen: {{ image.id }}</a>
+  <nav class="navbar navbar-light bg-light" style="background-color: #003366 !important;">
+    <a class="navbar-brand" href="/"><img src="{% static "img/logo.png" %}"></a>
+    <a href="/" class="btn btn-primary">Agregar foto</a>
   </nav>
 
   <div class="container">
