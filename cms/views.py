@@ -48,10 +48,10 @@ class ImageDetailView(LoginRequiredMixin, DetailView):
         context['names_found'] = names
         wb = xlrd.open_workbook('media/' + str(self.object.excel)) 
         sheet = wb.sheet_by_index(0)
-        excel_names = [sheet.row_values(row)[2] for row in range(1, sheet.nrows)]
+        excel_names = [sheet.row_values(row) for row in range(1, sheet.nrows)]
         related_names = []
         for excel_name in excel_names:
-            if excel_name in names:
+            if excel_name[2] in names:
                 related_names.append(excel_name)
         context['related_names'] = related_names
         return context

@@ -9,6 +9,20 @@
       background-image: url("{% static "img/fondo.png" %}");
       background-repeat: repeat;
     }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
   </style>
 </head>
 <body>
@@ -19,7 +33,7 @@
     <a href="/" class="btn btn-primary">Agregar foto</a>
   </nav>
 
-  <div class="container">
+  <div class="container" style="background-color:white;">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Texto extraido</a>
@@ -44,11 +58,30 @@
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <ul>
               <div class="row">
-              {% for related_name in related_names %}
-                <div class="col-4">
-                  <li>{{related_name}}</li>
-                </div>
-              {% endfor %}
+              <table>
+                <tr>
+                  <th>NOMBRE</th>
+                  <th>REGISTRO SIP</th>
+                  <th>TIPO DE INVESTIGACIÓN</th>
+                  <th>TITULO DE PROYECTO</th>
+                  <th>ADSCRITO</th>
+                  <th>NIVEL</th>
+                  <th>CARRERA</th>
+                  <th>GRADO ACADEMICO</th>
+                </tr>
+                {% for related_name in related_names %}
+                  <tr>
+                    <td>{{related_name.2}}</td>
+                    <td>{{related_name.1}}</td>
+                    <td>{{related_name.4}}</td>
+                    <td>{{related_name.5}}</td>
+                    <td>{{related_name.8}}</td>
+                    <td>{{related_name.9}}</td>
+                    <td>{{related_name.10}}</td>
+                    <td>{{related_name.11}}</td>
+                  </tr>
+                {% endfor %}
+              </table>
               </div>
             </ul>
             <a href="{{ image.export }}" class="btn btn-success">Exportar resultados</a>
